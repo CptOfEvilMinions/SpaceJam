@@ -1,0 +1,7 @@
+- hosts: freeipa
+  become: yes
+  become_method: sudo
+  tasks:
+    - import_tasks: 'roles/freeipa/deploy_freeipa_users.yml'
+      vars:
+        rockyou: "{{ lookup('file', 'conf/freeipa/rockyou.txt').split('\n') }}"

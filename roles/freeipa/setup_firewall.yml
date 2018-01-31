@@ -1,0 +1,56 @@
+####################################################################
+# Install/Setup FireallD
+####################################################################
+- name: Install/Setup FireallD
+  yum:
+    name: firewalld
+    state: latest
+- firewalld:
+    service: ntp
+    permanent: true
+    state: enabled
+- firewalld:
+    service: http
+    permanent: true
+    state: enabled
+- firewalld:
+    service: https
+    permanent: true
+    state: enabled
+- firewalld:
+    service: ldap
+    permanent: true
+    state: enabled
+- firewalld:
+    service: ldaps
+    permanent: true
+    state: enabled
+- firewalld:
+    service: kerberos
+    permanent: true
+    state: enabled
+- firewalld:
+    service: kpasswd
+    permanent: true
+    state: enabled
+- firewalld:
+    service: dns
+    permanent: true
+    state: enabled
+- firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+- service:
+    name: firewalld
+    state: restarted
+    enabled: yes
+
+####################################################################
+#  Slack notification
+####################################################################
+- name: Send slack notification when done
+  slack:
+    token: "{{ slack_token }}"
+    msg: '{{ ansible_nodename }}:{{ ansible_default_ipv4.address }} - Finished setting up FreeIPA firewall on {{ ansible_nodename }}'
+    channel: "{{ slack_channel }}"

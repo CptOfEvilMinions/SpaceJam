@@ -4,12 +4,15 @@ This project automates setting up an IR infrastructure to monitor network and ho
 
 # Build SpaceJam Infrastructure with Ansible
 ## Download repo locally
-* git clone https://github.com/Benster900/SpaceJam.git
+* git clone https://github.com/CptOfEvilMinions/SpaceJam.git
 * cd SpaceJam
 * Copy SSH pub key from local machine to all remote machines
 
+## Install/Setup FreeIPA
+ansible-playbook -i hosts deploy_pfsense.yml -u root --vault-id @prompt
+
 ## Install/Setup Manager
-ansible-playbook -i hosts deploy_management.yml -u root --vault-id @prompt
+0. ansible-playbook -i hosts deploy_management.yml -u root --vault-id @prompt
 * After Wazuh + ELK is setup browse to https://<IP addr of Wazuh> and login. Select "Wazuh" on the left and enter Wazuh API creds.
 
 ## Install/Setup pfSense

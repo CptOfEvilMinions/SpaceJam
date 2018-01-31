@@ -1,13 +1,18 @@
-freeipa_hostname: freeipa
-freeipa_domain: '{{ freeipa_hostname }}.{{ base_domain }}'
-freeipa_directory_password: <Password>
-freeipa_admin_username: admin
-freeipa_admin_password: <Password>
-freeipa_admin_group: hackinglab_admins
-freeipa_dns_server1: 8.8.8.8
-freeipa_dns_server2: 8.8.4.4
-freeipa_default_shell: /bin/bash
+freeipa_hostname: '{{ inventory_hostname }}'
+freeipa_domain: '{{ base_domain }}'
+freeipa_realm_dc: hackinglab
 
-# investigator account
-freeipa_investigator_user: <username>
-freeipa_investigator_pass: <Password>
+# FreeIPA admin users
+freeipa_directory_password: <password>
+freeipa_admin_user: admin
+freeipa_admin_password: <password>
+freeipa_dns_server1: <dns 1>
+freeipa_dns_server2: <dns 2>
+
+# FreeIPA DNS user
+freeipa_dns_minion_user: dnsservice
+freeipa_dns_minion_pass: <password>
+
+# FreeIPA Gitlab user
+freeipa_gitlab_user: gitlabservice
+freeipa_gitlab_pass: <password>
