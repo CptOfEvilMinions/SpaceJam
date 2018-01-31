@@ -5,16 +5,12 @@ manager ansible_ssh_host=10.100.3.30 ansible_python_interpreter=/usr/bin/python3
 freeipa ansible_ssh_host=10.100.3.38
 
 [database]
-<agent X ip addr>:<port>
+
 
 [webserver]
-<agent X ip addr>:<port>
+
 
 [win_agents]
-<agent 1 ip addr>:<port>
-<agent 2 ip addr>:<port>
-<agent 3 ip addr>:<port>
-<agent N ip addr>:<port>
 
 [linux_agents]
 

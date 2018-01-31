@@ -1,0 +1,54 @@
+####################################################################
+# Create/Setup DNS minion user
+####################################################################
+- name: Add DNS servier account
+  ipa_user:
+    name: '{{ freeipa_dns_minion_user }}'
+    sn: 'nope'
+    password: '{{ freeipa_dns_minion_pass }}'
+    state: present
+    givenname: '{{ freeipa_dns_minion_user }}'
+    ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
+    ipa_user: '{{ freeipa_admin_user }}'
+    ipa_pass: '{{ freeipa_admin_password }}'
+
+- name: Create DNS admin role
+  ipa_role:
+    name: dba
+    description: Database Administrators
+    state: present
+    user:
+      - '{{ freeipa_dns_minion_user }}'
+    privilege:
+      - 'DNS Administrators'
+    ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
+    ipa_user: '{{ freeipa_admin_user }}'
+    ipa_pass: '{{ freeipa_admin_password }}'
+
+
+####################################################################
+# Create/Setup Gitlab user
+####################################################################
+- name: Add Gitlab servier account
+  ipa_user:
+    name: '{{ freeipa_gitlab_user }}'
+    sn: 'nope'
+    password: '{{ freeipa_gitlab_pass }}'
+    state: present
+    givenname: '{{ freeipa_gitlab_user }}'
+    ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
+    ipa_user: '{{ freeipa_admin_user }}'
+    ipa_pass: '{{ freeipa_admin_password }}'
+
+- name: Create Gitlab admin role
+  ipa_role:
+    name: gitlab
+    description: Gitlab read-only
+    state: present
+    user:
+      - '{{ freeipa_gitlab_user }}'
+    privilege:
+      - 'Automember Readers'
+    ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
+    ipa_user: '{{ freeipa_admin_user }}'
+    ipa_pass: '{{ freeipa_admin_password }}'

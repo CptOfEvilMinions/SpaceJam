@@ -9,7 +9,7 @@
     sn: Acme
     state: present
     ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
-    ipa_user: '{{ freeipa_admin_username }}'
+    ipa_user: '{{ freeipa_admin_user }}'
     ipa_pass: '{{ freeipa_admin_password }}'
   with_items:
     - furphybogger
@@ -69,7 +69,7 @@
     description: Hackinglab admins
     user: '{{ item }}'
     ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
-    ipa_user: '{{ freeipa_admin_username }}'
+    ipa_user: '{{ freeipa_admin_user }}'
     ipa_pass: '{{ freeipa_admin_password }}'
   with_items:
     - maverickminger
@@ -87,5 +87,5 @@
     usergroup:
       - '{{ freeipa_admin_group }}'
     ipa_host: '{{ freeipa_hostname }}.{{ freeipa_domain }}'
-    ipa_user: '{{ freeipa_admin_username }}'
+    ipa_user: '{{ freeipa_admin_user }}'
     ipa_pass: '{{ freeipa_admin_password }}'
